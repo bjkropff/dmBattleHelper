@@ -1,29 +1,34 @@
-
-
 import {Component} from 'angular2/core';
+
 interface Hero {
-  id: number;
+  init: number;
   name: string;
+  hp: number;
+  ac: number;
 }
 @Component({
   selector: 'my-app',
   template:`
     <h1>{{title}}</h1>
-    <h2>My Heroes</h2>
+    <h2>Initative Tracker</h2>
     <ul class="heroes">
-      <li *ngFor="#hero of heroes"
+      <li *ngFor="#hero of heroes "
         [class.selected]="hero === selectedHero"
         (click)="onSelect(hero)">
-        <span class="badge">{{hero.id}}</span> {{hero.name}}
+        <span class="badge">{{hero.init}}</span> <b>{{hero.name}}</b> HP: {{hero.hp}} AC: {{hero.ac}}
       </li>
     </ul>
     <div *ngIf="selectedHero">
       <h2>{{selectedHero.name}} details!</h2>
-      <div><label>id: </label>{{selectedHero.id}}</div>
       <div>
-        <label>name: </label>
-        <input [(ngModel)]="selectedHero.name" placeholder="name"/>
+        <label>Init: </label>
+        <input [(ngModel)]="selectedHero.init" placeholder="init"/>
       </div>
+      <div>
+        <label>HP: </label>
+        <input [(ngModel)]="selectedHero.hp" placeholder="hitpoints"/>
+      </div>
+      <div><label>AC: </label>{{selectedHero.ac}}</div>
     </div>
   `,
   styles:[`
@@ -35,7 +40,7 @@ interface Hero {
       margin: 0 0 2em 0;
       list-style-type: none;
       padding: 0;
-      width: 10em;
+      width: 15em;
     }
     .heroes li {
       cursor: pointer;
@@ -77,20 +82,18 @@ interface Hero {
   `]
 })
 export class AppComponent {
-  title = 'Tour of Heroes';
+  title = 'Friends and Foes ';
   heroes = HEROES;
   selectedHero: Hero;
   onSelect(hero: Hero) { this.selectedHero = hero; }
 }
 var HEROES: Hero[] = [
-  { "id": 11, "name": "Mr. Nice" },
-  { "id": 12, "name": "Narco" },
-  { "id": 13, "name": "Bombasto" },
-  { "id": 14, "name": "Celeritas" },
-  { "id": 15, "name": "Magneta" },
-  { "id": 16, "name": "RubberMan" },
-  { "id": 17, "name": "Dynama" },
-  { "id": 18, "name": "Dr IQ" },
-  { "id": 19, "name": "Magma" },
-  { "id": 20, "name": "Tornado" }
+  { "init": 11, "name": "Tonka", "hp": "5", "ac": "12" },
+  { "init": 12, "name": "Billy", "hp": "5", "ac": "2" },
+  { "init": 31, "name": "Jordan", "hp": "34", "ac": "1" },
+  { "init": 19, "name": "Will", "hp": "12", "ac": "15" },
+  { "init": 15, "name": "Sildar", "hp": "50", "ac": "22" },
+  { "init": 18, "name": "Karrik", "hp": "25", "ac": "12" },
+  { "init": 11, "name": "LL", "hp": "15", "ac": "12" },
+
 ];
